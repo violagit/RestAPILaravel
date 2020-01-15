@@ -14,7 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Question::get(), 200);
     }
 
     /**
@@ -35,7 +35,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json(Question::create($request->all()), 201);
     }
 
     /**
@@ -44,9 +44,13 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show($id)
     {
-        //
+        $question = Question::find($id);
+        if (is_null($question)) {
+            return response()->json(['message' => 'This Question does not exists'], 404);
+        }
+        return response()->json($question, 200);
     }
 
     /**
@@ -67,9 +71,13 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, $id)
     {
-        //
+        $question = Question::find($id);
+        if (is_null($question)) {
+            return response()->json(['message' => 'This Question does not exists'], 404);
+        }
+        return response()->json($question->update($request->all()), 200);
     }
 
     /**
@@ -78,8 +86,12 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy($id)
     {
-        //
+        $question = Question::find($id);
+        if (is_null($question)) {
+            return response()->json(['message' => 'This Question does not exists'], 404);
+        }
+        return response()->json($question->delete(), 204);
     }
 }
