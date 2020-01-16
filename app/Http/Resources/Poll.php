@@ -18,4 +18,8 @@ class Poll extends JsonResource
            'title' => mb_strimwidth($this->title, 0, 5, '...'),
        ];
     }
+
+    public function questions(){
+        return $this->hasMany('App\Question');
+    }
 }
