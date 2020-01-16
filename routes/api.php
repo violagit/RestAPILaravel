@@ -23,3 +23,4 @@ Route::put('polls/{id}','PollsController@update');
 Route::delete('polls/{id}', 'PollsController@delete');
 Route::any('errors','PollsController@errors');
 Route::apiResource('questions', 'QuestionController');
+Route::get('polls/{poll}/questions','PollsController@questions');
