@@ -20,11 +20,9 @@ class PollsController extends Controller
 
     public function showPoll($id)
     {
-        $poll = Poll::find($id);
-        if (is_null($poll)) {
-            return response()->json(['message' => 'This Record does not exists'], 404);
-        }
-        $response = new PollResource(Poll::findOrFail($id), 200);
+        $poll = Poll::with('questions')->findOrFail($id);
+        $response['poll'] = $poll;
+        $response['questions'] = $poll->questions; 
         return response()->json($response, 200);
     }
 
