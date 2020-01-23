@@ -24,4 +24,4 @@ Route::delete('polls/{id}', 'PollsController@deletePoll');
 Route::any('errors','PollsController@errors');
 Route::apiResource('questions', 'QuestionController');
 Route::get('polls/{poll}/questions','PollsController@questions');
-
+Route::get('files/get','FilesController@show');
