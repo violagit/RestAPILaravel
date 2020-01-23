@@ -15,7 +15,7 @@ class PollsController extends Controller
 {
     public function indexPoll()
     {
-        return response()->json(Poll::get(), 200);
+        return response()->json(Poll::paginate(3), 200);
     }
 
     public function showPoll($id)
