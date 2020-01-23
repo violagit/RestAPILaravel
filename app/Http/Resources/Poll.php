@@ -17,7 +17,4 @@ class Poll extends JsonResource
        return parent::toArray($request);
     }
 
-    public function questions(){
-        return $this->hasMany('App\Question');
-    }
 }
