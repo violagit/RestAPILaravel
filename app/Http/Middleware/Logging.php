@@ -18,4 +18,9 @@ class Logging
         Log::debug($request->method());
         return $next($request);
     }
+
+    public function terminate($request, $response){
+
+        Log::debug($response->status());
+    }
 }
