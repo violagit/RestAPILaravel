@@ -19,6 +19,12 @@ class Logging
         return $next($request);
     }
 
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     */
     public function terminate($request, $response){
 
         Log::debug($response->status());
