@@ -7,7 +7,7 @@ use Closure;
 class HttpHeaders
 {
     /**
-     * Handle an incoming request.
+     * Handle an incoming request function.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
